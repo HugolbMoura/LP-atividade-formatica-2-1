@@ -69,9 +69,9 @@ void salvarProdutos(Loja *loja, const char *nome_arquivo)
 void adicionarProduto(Loja *loja)
 {
     Produto novo_produto;
-    printf("Digite o código do produto: ");
+    printf("Digite o codigo do produto: ");
     scanf("%d", &novo_produto.codigo);
-    printf("Digite a designação do produto: ");
+    printf("Digite a designaçao do produto: ");
     scanf("%s", novo_produto.designacao);
     printf("Digite o preço do produto: ");
     scanf("%f", &novo_produto.preco);
@@ -90,7 +90,7 @@ void removerProduto(Loja *loja)
 {
 
     int codigo;
-    printf("Digite o código do produto a ser removido: ");
+    printf("Digite o codigo do produto a ser removido: ");
     scanf("%d", &codigo);
 
     int index = -1;
@@ -119,20 +119,20 @@ void removerProduto(Loja *loja)
     }
     else
     {
-        printf("Produto não encontrado.\n");
+        printf("Produto nao encontrado.\n");
     }
 }
 // edita um produto da loja
 void editarProduto(Loja *loja)
 {
     int codigo;
-    printf("Digite o código do produto a ser editado: ");
+    printf("Digite o codigo do produto a ser editado: ");
     scanf("%d", &codigo);
 
     Produto *produto = encontrarProdutoPorCodigo(loja, codigo);
     if (produto != NULL)
     {
-        printf("Digite a nova designação do produto: ");
+        printf("Digite a nova designaçao do produto: ");
         scanf("%s", produto->designacao);
         printf("Digite o novo preço do produto: ");
         scanf("%f", &produto->preco);
@@ -143,26 +143,26 @@ void editarProduto(Loja *loja)
     }
     else
     {
-        printf("Produto não encontrado.\n");
+        printf("Produto nao encontrado.\n");
     }
 }
 // lista todos os produtos da loja por ordem crescente de código
 void pesquisarProdutoPorCodigo(Loja *loja)
 {
     int codigo;
-    printf("Digite o código do produto a ser pesquisado: ");
+    printf("Digite o codigo do produto a ser pesquisado: ");
     scanf("%d", &codigo);
 
     Produto *produto = encontrarProdutoPorCodigo(loja, codigo);
     if (produto != NULL)
     {
-        printf("Código: %d\n", produto->codigo);
-        printf("Designação: %s\n", produto->designacao);
+        printf("Codigo: %d\n", produto->codigo);
+        printf("Designaçao: %s\n", produto->designacao);
         printf("Preço: %.2f\n", produto->preco);
     }
     else
     {
-        printf("Produto não encontrado.\n");
+        printf("Produto nao encontrado.\n");
     }
 }
 // lista todos os produtos da loja por nome
@@ -176,13 +176,13 @@ void pesquisarProdutoPorNome(Loja *loja)
     {
         if (strcmp(loja->produtos[i].designacao, nome) == 0)
         {
-            printf("Código: %d\n", loja->produtos[i].codigo);
-            printf("Designação: %s\n", loja->produtos[i].designacao);
+            printf("Codigo: %d\n", loja->produtos[i].codigo);
+            printf("Designaçao: %s\n", loja->produtos[i].designacao);
             printf("Preço: %.2f\n", loja->produtos[i].preco);
             return;
         }
     }
-    printf("Produto não encontrado.\n");
+    printf("Produto nao encontrado.\n");
 }
 // gerar relatório de vendas
 void gerarRelatorioVendas(Loja *loja)
@@ -190,17 +190,17 @@ void gerarRelatorioVendas(Loja *loja)
     float total_vendas = 0.0;
     float total_arrecadado = 0.0;
 
-    printf("\nRelatório de vendas:\n");
-    printf("Código | Designação | Quantidade vendida | Total arrecadado\n");
+    printf("\nRelatorio de vendas:\n");
+    printf("Codigo |   Descricao   | Quantidade vendida | Total arrecadado\n");
     for (int i = 0; i < loja->quantidade_produtos; i++)
     {
         Produto *produto = &loja->produtos[i];
         float arrecadado = produto->quantidade_vendida * produto->preco;
-        printf("%d | %s | %d | %.2f\n", produto->codigo, produto->designacao, produto->quantidade_vendida, arrecadado);
+        printf("%6.d | %13s | %18d | %16.2f\n", produto->codigo, produto->designacao, produto->quantidade_vendida, arrecadado);
         total_vendas += produto->quantidade_vendida;
         total_arrecadado += arrecadado;
     }
 
     printf("\nTotal de vendas: %.0f\n", total_vendas);
-    printf("Total arrecadado: %.2f\n", total_arrecadado);
+    printf("Total arrecadado: %.2f\n\n", total_arrecadado);
 }

@@ -6,24 +6,24 @@
 int main()
 {
     Loja loja;
-
+    // Inicializar a loja
     carregarProdutos(&loja, "produtos.csv");
     carregarVendas(&loja, "vendas.csv");
-
+    // Menu
     int opcao;
     do
     {
         printf("1. Adicionar produto\n");
         printf("2. Remover produto\n");
         printf("3. Editar produto\n");
-        printf("4. Pesquisar produto por código\n");
+        printf("4. Pesquisar produto por codigo\n");
         printf("5. Pesquisar produto por nome\n");
         printf("6. Inserir Venda\n");
-        printf("7. Gerar relatório de vendas\n");
+        printf("7. Gerar relatorio de vendas\n");
         printf("0. Sair\n");
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opçao: ");
         scanf("%d", &opcao);
-
+        
         switch (opcao)
         {
         case 1:
@@ -51,7 +51,7 @@ int main()
             printf("A sair...\n");
             break;
         default:
-            printf("Opção inválida!\n");
+            printf("Opção invalida!\n");
             break;
         }
     } while (opcao != 0);
